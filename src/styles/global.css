@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -5,6 +6,8 @@
   --line: rgba(255, 255, 255, 0.07);
   --cell-fill: rgba(255, 255, 255, 0.085);
   --bg: #080808;
+  --font-title: "Bebas Neue", sans-serif;
+  --font-text: "DM Mono", monospace;
 }
 
 * {
@@ -16,14 +19,23 @@ body {
   margin: 0;
   min-height: 100%;
   background: var(--bg);
-  font-family:
-    "Aptos",
-    "Segoe UI",
-    sans-serif;
+  font-family: var(--font-text);
 }
 
 button {
   font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .showcase-shell {

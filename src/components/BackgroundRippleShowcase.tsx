@@ -70,7 +70,7 @@ function RippleGrid({ rows = 40, cols = 28, cellSize = 70 }: RippleGridProps) {
 
 export default function BackgroundRippleShowcase() {
   return (
-    <main className="showcase-shell">
+    <main className="showcase-shell" id="top">
       <section className="hero" aria-label="Background ripple effect">
         <div className="background-stage">
           <RippleGrid />
