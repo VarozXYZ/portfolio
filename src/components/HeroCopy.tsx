@@ -47,6 +47,19 @@ function ContactArrowIcon() {
   );
 }
 
+function LinkedInIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="hero-button-icon"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M6.94 8.98H3.78v10.1h3.16V8.98ZM5.36 4a1.84 1.84 0 1 0 0 3.68A1.84 1.84 0 0 0 5.36 4Zm13.86 9.52c0-3.04-1.62-4.45-3.78-4.45a3.25 3.25 0 0 0-2.96 1.63h-.04V8.98H9.42v10.1h3.16v-5c0-1.32.25-2.6 1.88-2.6 1.6 0 1.62 1.5 1.62 2.68v4.92h3.14v-5.56Z" />
+    </svg>
+  );
+}
+
 export default function HeroCopy() {
   return (
     <div className="hero-copy">
@@ -89,6 +102,17 @@ export default function HeroCopy() {
         <ButtonLink href="mailto:alvarorodriguezpizarro@gmail.com">
           Get in touch
           <ContactArrowIcon />
+        </ButtonLink>
+        <ButtonLink
+          href="https://www.linkedin.com/in/alvaroxyz/"
+          target="_blank"
+          rel="noreferrer"
+          variant="secondary"
+          className="hero-button-icon-only"
+          aria-label="Open LinkedIn profile"
+          title="Open LinkedIn profile"
+        >
+          <LinkedInIcon />
         </ButtonLink>
       </div>
     </div>

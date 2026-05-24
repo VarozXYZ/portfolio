@@ -9,8 +9,10 @@ export type Project = {
   period: string;
   description: string;
   href?: string;
+  liveHref?: string;
   image?: string;
   imageAspectRatio?: string;
+  badge?: string;
   private?: boolean;
   stack: Technology[];
   featured?: boolean;
@@ -130,6 +132,7 @@ export const projects: Project[] = [
     description:
       "Game-oriented web project focused on interactive UI and playful front-end behavior.",
     href: "https://github.com/VarozXYZ/fury-of-thor",
+    liveHref: "https://fury-rouge.vercel.app/",
     image: "/fury-of-thor.png",
     imageAspectRatio: "86 / 50",
     stack: [tech.javascript, tech.css, tech.nodejs],
@@ -138,6 +141,7 @@ export const projects: Project[] = [
   {
     title: "Summer",
     period: "2026",
+    badge: "Work in progress",
     description:
       "A Google Chrome extension that can summarize Google Drive video files using AI.",
     href: "https://github.com/VarozXYZ/summer",

@@ -60,7 +60,49 @@ function GitHubLinkIcon() {
   );
 }
 
+function LiveDemoIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="project-link-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M7 17 17 7"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2"
+      />
+      <path
+        d="M9 7h8v8"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+}
+
 export default function ProjectCard({ project }: ProjectCardProps) {
+  function openProject() {
+    if (!project.href) {
+      return;
+    }
+
+    window.open(project.href, "_blank", "noreferrer");
+  }
+
+  function handleProjectKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    event.preventDefault();
+    openProject();
+  }
+
   const cardContent = (
     <>
       {project.private ? (
@@ -79,7 +121,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="project-card-body">
         <div>
-          <h3>{project.title}</h3>
+          <div className="project-title-row">
+            <h3>{project.title}</h3>
+            {project.badge ? (
+              <span className="project-badge">{project.badge}</span>
+            ) : null}
+          </div>
           <p className="project-period">{project.period}</p>
         </div>
         <p className="project-description">{project.description}</p>
@@ -102,10 +149,31 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        {project.href ? (
-          <span className="project-link">
-            View Project <GitHubLinkIcon />
-          </span>
+        {project.href || project.liveHref ? (
+          <div className="project-links">
+            {project.href ? (
+              <a
+                className="project-link"
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(event) => event.stopPropagation()}
+              >
+                View Project <GitHubLinkIcon />
+              </a>
+            ) : null}
+            {project.liveHref ? (
+              <a
+                className="project-link project-link-demo"
+                href={project.liveHref}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(event) => event.stopPropagation()}
+              >
+                Live Demo <LiveDemoIcon />
+              </a>
+            ) : null}
+          </div>
         ) : (
           <span className="project-link project-link-private">
             Private Project <LockIcon />
@@ -117,14 +185,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   if (project.href) {
     return (
-      <a
+      <article
         className="project-card project-card-link"
-        href={project.href}
-        target="_blank"
-        rel="noreferrer"
+        role="link"
+        tabIndex={0}
+        onClick={openProject}
+        onKeyDown={handleProjectKeyDown}
       >
         {cardContent}
-      </a>
+      </article>
     );
   }
 

@@ -1,6 +1,6 @@
 export default function PortraitFrame() {
   return (
-    <div className="portrait-shell" aria-label="Portrait image placeholder">
+    <div className="portrait-shell">
       <div className="portrait-orbit portrait-orbit-back" />
       <div className="portrait-orbit portrait-orbit-front" />
       <div className="portrait-accent portrait-accent-right" />

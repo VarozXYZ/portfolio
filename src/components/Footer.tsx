@@ -11,6 +11,9 @@ export default function Footer() {
         <a href="https://github.com/VarozXYZ/" target="_blank" rel="noreferrer">
           GitHub
         </a>
+        <a href="https://www.linkedin.com/in/alvaroxyz/" target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
         <a href="/#top">Back to top</a>
       </nav>
     </footer>

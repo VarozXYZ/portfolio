@@ -61,7 +61,8 @@ export default function RippleGrid({
               } as React.CSSProperties
             }
             onClick={() => handleCellClick(cell)}
-            aria-label={`Ripple cell ${cell.row + 1}, ${cell.col + 1}`}
+            tabIndex={-1}
+            aria-hidden="true"
           />
         );
       })}

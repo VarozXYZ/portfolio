@@ -54,6 +54,14 @@ function GitHubIcon() {
   );
 }
 
+function LinkedInIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+      <path d="M6.94 8.98H3.78v10.1h3.16V8.98ZM5.36 4a1.84 1.84 0 1 0 0 3.68A1.84 1.84 0 0 0 5.36 4Zm13.86 9.52c0-3.04-1.62-4.45-3.78-4.45a3.25 3.25 0 0 0-2.96 1.63h-.04V8.98H9.42v10.1h3.16v-5c0-1.32.25-2.6 1.88-2.6 1.6 0 1.62 1.5 1.62 2.68v4.92h3.14v-5.56Z" />
+    </svg>
+  );
+}
+
 type ActionIconLinkProps = {
   href: string;
   label: string;
@@ -180,6 +188,14 @@ export default function ResizableNavbar() {
             <ContactIcon />
           </ActionIconLink>
           <ActionIconLink
+            href="https://www.linkedin.com/in/alvaroxyz/"
+            label="Open LinkedIn profile"
+            isScrolled={isScrolled}
+            newTab
+          >
+            <LinkedInIcon />
+          </ActionIconLink>
+          <ActionIconLink
             href="https://github.com/VarozXYZ/"
             label="Open GitHub profile"
             isScrolled={isScrolled}
@@ -250,6 +266,15 @@ export default function ResizableNavbar() {
                 onClick={() => setIsMobileOpen(false)}
               >
                 <ContactIcon />
+              </ActionIconLink>
+              <ActionIconLink
+                href="https://www.linkedin.com/in/alvaroxyz/"
+                label="Open LinkedIn profile"
+                isScrolled={isScrolled}
+                newTab
+                onClick={() => setIsMobileOpen(false)}
+              >
+                <LinkedInIcon />
               </ActionIconLink>
               <ActionIconLink
                 href="https://github.com/VarozXYZ/"
