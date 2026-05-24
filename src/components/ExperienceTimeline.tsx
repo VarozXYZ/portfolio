@@ -55,15 +55,15 @@ export default function ExperienceTimeline() {
             className={[
               "timeline-item",
               index % 2 === 0 ? "timeline-item-left" : "timeline-item-right",
-              index === 0 ? "timeline-date-right" : "",
-              index === 2 ? "timeline-left-offset" : "",
             ].join(" ")}
             key={`${experience.company}-${experience.period}`}
           >
             <div className="timeline-dot" aria-hidden="true" />
-            <div className="timeline-date">{experience.period}</div>
             <div className="timeline-card">
-              <h3>{experience.role}</h3>
+              <div className="timeline-card-header">
+                <h3>{experience.role}</h3>
+                <p className="timeline-period">{experience.period}</p>
+              </div>
               <p className="timeline-company">
                 <span>{experience.company}</span> - {experience.location}
               </p>

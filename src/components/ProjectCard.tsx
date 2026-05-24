@@ -61,8 +61,8 @@ function GitHubLinkIcon() {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  return (
-    <article className="project-card">
+  const cardContent = (
+    <>
       {project.private ? (
         <PrivateProjectPreview />
       ) : project.image ? (
@@ -103,15 +103,34 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {project.href ? (
-          <a className="project-link" href={project.href} target="_blank" rel="noreferrer">
+          <span className="project-link">
             View Project <GitHubLinkIcon />
-          </a>
+          </span>
         ) : (
           <span className="project-link project-link-private">
             Private Project <LockIcon />
           </span>
         )}
       </div>
+    </>
+  );
+
+  if (project.href) {
+    return (
+      <a
+        className="project-card project-card-link"
+        href={project.href}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <article className="project-card">
+      {cardContent}
     </article>
   );
 }

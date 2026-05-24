@@ -6,9 +6,9 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { name: "Experience", href: "/#experience" },
-  { name: "Projects", href: "/#projects" },
-  { name: "Stack", href: "/#stack" },
+  { name: "EXPERIENCE", href: "/#experience" },
+  { name: "PROJECTS", href: "/#projects" },
+  { name: "STACK", href: "/#stack" },
 ];
 
 function Logo() {
@@ -95,7 +95,15 @@ function handlePageAnchorClick(
   href: string,
   afterNavigate?: () => void,
 ) {
-  if (!href.startsWith("/#") || window.location.pathname !== "/") {
+  if (!href.startsWith("/#")) {
+    afterNavigate?.();
+    return;
+  }
+
+  if (window.location.pathname !== "/") {
+    event.preventDefault();
+    window.history.pushState(null, "", href);
+    window.dispatchEvent(new Event("portfolio:navigate"));
     afterNavigate?.();
     return;
   }

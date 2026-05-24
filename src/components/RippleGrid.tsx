@@ -8,7 +8,6 @@ type Cell = {
 type RippleGridProps = {
   rows?: number;
   cols?: number;
-  cellSize?: number;
 };
 
 function distance(a: Cell, b: Cell) {
@@ -18,7 +17,6 @@ function distance(a: Cell, b: Cell) {
 export default function RippleGrid({
   rows = 40,
   cols = 28,
-  cellSize = 70,
 }: RippleGridProps) {
   const [clickedCell, setClickedCell] = useState<Cell | null>({
     row: Math.floor(rows / 2),
@@ -46,7 +44,6 @@ export default function RippleGrid({
       style={
         {
           "--cols": cols,
-          "--cell-size": `${cellSize}px`,
         } as React.CSSProperties
       }
       aria-label="Interactive background ripple grid"
