@@ -4,17 +4,19 @@ import RippleGrid from "./RippleGrid";
 
 export default function BackgroundRippleShowcase() {
   return (
-    <main className="showcase-shell" id="top">
-      <section className="hero" aria-label="Background ripple effect">
-        <div className="background-stage">
-          <RippleGrid />
-        </div>
+    <div className="background-layer" aria-hidden="true">
+      <RippleGrid />
+    </div>
+  );
+}
 
-        <div className="hero-content">
-          <HeroCopy />
-          <PortraitFrame />
-        </div>
-      </section>
-    </main>
+export function HeroSection() {
+  return (
+    <section className="hero" id="top" aria-label="Introductory profile">
+      <div className="hero-content">
+        <HeroCopy />
+        <PortraitFrame />
+      </div>
+    </section>
   );
 }
