@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -7,7 +7,7 @@
   --cell-fill: rgba(255, 255, 255, 0.085);
   --bg: #080808;
   --font-title: "Bebas Neue", sans-serif;
-  --font-text: "DM Mono", monospace;
+  --font-text: "Space Grotesk", sans-serif;
 }
 
 * {
@@ -50,8 +50,251 @@ h6,
   position: relative;
   display: grid;
   min-height: 280vh;
-  place-items: center;
+  align-items: start;
   isolation: isolate;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  width: min(100% - 2rem, 72rem);
+  grid-template-columns: minmax(0, 0.98fr) minmax(16rem, 0.72fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  margin: 0 auto;
+  padding-top: clamp(8.5rem, 14vh, 11rem);
+}
+
+.hero-copy {
+  display: flex;
+  max-width: 40rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-title {
+  margin: 0;
+  color: #f6f6f0;
+  font-size: clamp(4.75rem, 11vw, 9.25rem);
+  line-height: 0.84;
+  text-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.65);
+}
+
+.hero-title span {
+  display: block;
+  color: #00ff0e;
+}
+
+.hero-intro {
+  max-width: 34rem;
+  margin: 1.5rem 0 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.hero-intro p {
+  margin: 0;
+}
+
+.focus-list {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.focus-list p {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.focus-marker {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: 0 0 auto;
+  border: 1px solid rgba(0, 255, 14, 0.8);
+  border-radius: 999px;
+  box-shadow: 0 0 1rem rgba(0, 255, 14, 0.24);
+}
+
+.accent-text {
+  color: #00ff0e;
+  font-weight: 600;
+}
+
+.hero-location {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+}
+
+.hero-location-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: #00ff0e;
+  flex: 0 0 auto;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.hero-button {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border-radius: 0.45rem;
+  padding: 0 1.45rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.hero-button-primary {
+  border: 1px solid #00ff0e;
+  background: #00ff0e;
+  color: #071007;
+  box-shadow: 0 0 2rem rgba(0, 255, 14, 0.18);
+}
+
+.hero-button-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(1rem);
+}
+
+.hero-button-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.hero-button-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+}
+
+.portrait-shell {
+  position: relative;
+  min-height: clamp(20rem, 31vw, 28rem);
+}
+
+.portrait-frame {
+  position: absolute;
+  inset: 10% 6% 8% 15%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 14, 0.76);
+  border-radius: 2rem 2rem 5.25rem 2rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.015)),
+    rgba(22, 25, 24, 0.86);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 2rem 5rem rgba(0, 0, 0, 0.45),
+    0 0 2rem rgba(0, 255, 14, 0.12);
+  transform: skewX(-8deg);
+}
+
+.portrait-image,
+.portrait-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.portrait-image {
+  display: block;
+  object-fit: contain;
+  object-position: center center;
+  transform: skewX(8deg) translateY(1.1rem);
+}
+
+.portrait-placeholder {
+  background:
+    radial-gradient(circle at 42% 24%, rgba(255, 255, 255, 0.11), transparent 0 12rem),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.08), transparent 48%),
+    rgba(255, 255, 255, 0.02);
+  transform: skewX(8deg) scale(1.12);
+}
+
+.portrait-orbit {
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(255, 255, 255, 0.02);
+  transform: skewX(-12deg);
+}
+
+.portrait-orbit-back {
+  inset: 11% 16% 0 4%;
+  border-radius: 3rem 3rem 4rem 3rem;
+}
+
+.portrait-orbit-front {
+  inset: 2% 1% 7% 23%;
+  z-index: 2;
+  border-color: rgba(255, 255, 255, 0.16);
+  border-radius: 2rem 2rem 5.5rem 2rem;
+  background: transparent;
+}
+
+.portrait-accent {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 1rem;
+  background: rgba(0, 255, 14, 0.12);
+  filter: blur(0.2px);
+  transform: skewX(-12deg);
+}
+
+.portrait-accent-right {
+  top: 31%;
+  right: -1%;
+  width: 28%;
+  height: 18%;
+}
+
+.portrait-accent-left {
+  bottom: 15%;
+  left: 10%;
+  width: 25%;
+  height: 22%;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.portrait-dots {
+  position: absolute;
+  top: 2%;
+  right: -5%;
+  width: 8rem;
+  height: 10rem;
+  opacity: 0.32;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.34) 1px, transparent 1px);
+  background-size: 0.8rem 0.8rem;
 }
 
 .background-stage {
@@ -138,6 +381,40 @@ h6,
 }
 
 @media (max-width: 760px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 8rem;
+  }
+
+  .hero-copy {
+    max-width: none;
+  }
+
+  .hero-title {
+    font-size: clamp(4.2rem, 24vw, 6.5rem);
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-button {
+    flex: 1 1 11rem;
+  }
+
+  .portrait-shell {
+    min-height: 21rem;
+  }
+
+  .portrait-frame {
+    inset: 8% 6% 6% 13%;
+  }
+
+  .portrait-dots {
+    right: 0;
+  }
+
   .ripple-grid {
     transform: translateX(-16%);
   }
