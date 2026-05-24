@@ -1,5 +1,6 @@
 import BackgroundRippleShowcase, { HeroSection } from "./BackgroundRippleShowcase";
 import ExperienceTimeline from "./ExperienceTimeline";
+import ProjectsSection from "./ProjectsSection";
 
 export default function PageShell() {
   return (
@@ -7,6 +8,7 @@ export default function PageShell() {
       <BackgroundRippleShowcase />
       <HeroSection />
       <ExperienceTimeline />
+      <ProjectsSection />
     </main>
   );
 }

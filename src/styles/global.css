@@ -22,6 +22,11 @@ body {
   font-family: var(--font-text);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
 button {
   font: inherit;
 }
@@ -52,7 +57,7 @@ h6,
   position: relative;
   z-index: 2;
   display: grid;
-  min-height: 92vh;
+  min-height: 100vh;
   align-items: start;
   isolation: isolate;
 }
@@ -348,6 +353,7 @@ h6,
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
+.section-heading h1,
 .section-heading h2 {
   margin: 0;
   color: #f6f6f0;
@@ -526,6 +532,333 @@ h6,
   line-height: 1.7;
 }
 
+.projects-section,
+.all-projects-section {
+  position: relative;
+  z-index: 3;
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 7rem) 0 clamp(6rem, 10vw, 9rem);
+}
+
+.projects-page {
+  min-height: 100vh;
+}
+
+.all-projects-section {
+  padding-top: clamp(8.5rem, 14vh, 11rem);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.projects-grid-all {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.project-card,
+.more-projects-card {
+  min-height: 26rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.45rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+    rgba(255, 255, 255, 0.025);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(0.75rem);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.project-preview {
+  position: relative;
+  height: 12rem;
+  margin: 1rem 1rem 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.35rem;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 255, 14, 0.12), transparent 0 8rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.015));
+}
+
+.project-image {
+  display: block;
+  box-sizing: border-box;
+  width: calc(100% - 2rem);
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 1rem 1rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.35rem;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(0, 255, 14, 0.06), transparent 0 9rem),
+    rgba(2, 7, 10, 0.94);
+  object-fit: contain;
+  object-position: center;
+}
+
+.project-private-preview {
+  display: grid;
+  width: calc(100% - 2rem);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  place-items: center;
+  margin: 1rem 1rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.35rem;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.08), transparent 0 5rem),
+    rgba(255, 255, 255, 0.025);
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.project-private-preview img {
+  width: 5rem;
+  height: 5rem;
+  filter: drop-shadow(0 1rem 1.8rem rgba(0, 0, 0, 0.35));
+}
+
+.project-preview::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 100% 1.2rem;
+  opacity: 0.28;
+}
+
+.project-preview-bar {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.55rem;
+}
+
+.project-preview-bar span {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.project-preview-body {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.55rem 0.85rem;
+}
+
+.project-preview-body span {
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.17);
+}
+
+.project-preview-body span:nth-child(1) {
+  width: 76%;
+  background: rgba(0, 255, 14, 0.42);
+}
+
+.project-preview-body span:nth-child(2) {
+  width: 52%;
+}
+
+.project-preview-body span:nth-child(3) {
+  width: 88%;
+}
+
+.project-preview-body span:nth-child(4) {
+  width: 40%;
+}
+
+.project-preview-dashboard {
+  background:
+    radial-gradient(circle at 72% 24%, rgba(0, 255, 14, 0.16), transparent 0 6rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+}
+
+.project-preview-chart .project-preview-body span {
+  height: 0.65rem;
+}
+
+.project-preview-chart .project-preview-body span:nth-child(1) {
+  width: 38%;
+}
+
+.project-preview-chart .project-preview-body span:nth-child(2) {
+  width: 78%;
+}
+
+.project-preview-chart .project-preview-body span:nth-child(3) {
+  width: 56%;
+}
+
+.project-preview-game {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0, 255, 14, 0.22), transparent 0 5rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+}
+
+.project-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.project-card h3 {
+  margin: 0;
+  color: #f6f6f0;
+  font-size: clamp(1.55rem, 2.4vw, 2.1rem);
+  line-height: 0.95;
+}
+
+.project-period {
+  margin: 0.25rem 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.project-description {
+  margin: 0.9rem 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.project-tech {
+  position: relative;
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.76);
+  outline: none;
+}
+
+.project-tech img,
+.project-tech svg {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.project-tech-invert {
+  filter: invert(1);
+}
+
+.project-tech::after {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  z-index: 5;
+  width: max-content;
+  max-width: 10rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.35rem;
+  background: rgba(8, 8, 8, 0.94);
+  color: rgba(255, 255, 255, 0.84);
+  content: attr(data-label);
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.25rem);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.project-tech:hover::after,
+.project-tech:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.project-link {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  width: fit-content;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  color: #00ff0e;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.project-link-private {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.project-link-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 auto;
+}
+
+.more-projects-card {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.7rem;
+  border-style: dashed;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.more-projects-card:hover {
+  border-color: rgba(0, 255, 14, 0.5);
+  background: rgba(0, 255, 14, 0.045);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.more-projects-card > span {
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border: 1px solid rgba(0, 255, 14, 0.7);
+  border-radius: 999px;
+  color: #00ff0e;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.more-projects-card strong {
+  color: #f6f6f0;
+}
+
+.more-projects-card small {
+  color: rgba(255, 255, 255, 0.55);
+}
+
 .ripple-grid {
   display: grid;
   width: max-content;
@@ -659,12 +992,38 @@ h6,
     margin-top: 0.75rem;
   }
 
+  .projects-section,
+  .all-projects-section {
+    padding-top: 3rem;
+  }
+
+  .projects-grid,
+  .projects-grid-all {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card,
+  .more-projects-card {
+    min-height: auto;
+  }
+
   .ripple-grid {
     transform: translateX(-16%);
   }
 }
 
+@media (min-width: 761px) and (max-width: 1080px) {
+  .projects-grid,
+  .projects-grid-all {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .ripple-cell {
     animation: none;
     transition: none;

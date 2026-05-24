@@ -6,17 +6,20 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Stack", href: "#stack" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Stack", href: "/#stack" },
 ];
 
 function Logo() {
+  const href = "/#top";
+
   return (
     <a
-      href="#top"
+      href={href}
       className="flex items-center gap-3 text-sm font-semibold tracking-wide text-white"
       aria-label="Go to top"
+      onClick={(event) => handlePageAnchorClick(event, href)}
     >
       <img src="/arp-logo-blanco.svg" alt="" className="h-15 w-15" />
     </a>
@@ -57,7 +60,7 @@ type ActionIconLinkProps = {
   children: React.ReactNode;
   isScrolled: boolean;
   inverted?: boolean;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
 function ActionIconLink({
@@ -85,6 +88,34 @@ function ActionIconLink({
       {children}
     </a>
   );
+}
+
+function handlePageAnchorClick(
+  event: React.MouseEvent<HTMLAnchorElement>,
+  href: string,
+  afterNavigate?: () => void,
+) {
+  if (!href.startsWith("/#") || window.location.pathname !== "/") {
+    afterNavigate?.();
+    return;
+  }
+
+  const target = document.querySelector(href.slice(1));
+
+  if (!target) {
+    afterNavigate?.();
+    return;
+  }
+
+  event.preventDefault();
+  target.scrollIntoView({
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth",
+    block: "start",
+  });
+  window.history.pushState(null, "", href);
+  afterNavigate?.();
 }
 
 export default function ResizableNavbar() {
@@ -120,6 +151,7 @@ export default function ResizableNavbar() {
             <a
               key={item.href}
               href={item.href}
+              onClick={(event) => handlePageAnchorClick(event, item.href)}
               className="rounded-full px-4 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white focus-visible:outline-none"
             >
               {item.name}
@@ -129,9 +161,10 @@ export default function ResizableNavbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ActionIconLink
-            href="#contact"
+            href="/#contact"
             label="Get in touch"
             isScrolled={isScrolled}
+            onClick={(event) => handlePageAnchorClick(event, "/#contact")}
           >
             <ContactIcon />
           </ActionIconLink>
@@ -190,17 +223,21 @@ export default function ResizableNavbar() {
                 key={item.href}
                 href={item.href}
                 className="rounded-xl px-4 py-3 text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
-                onClick={() => setIsMobileOpen(false)}
+                onClick={(event) =>
+                  handlePageAnchorClick(event, item.href, () => setIsMobileOpen(false))
+                }
               >
                 {item.name}
               </a>
             ))}
             <div className="mt-2 flex gap-2">
               <ActionIconLink
-                href="#contact"
+                href="/#contact"
                 label="Get in touch"
                 isScrolled={isScrolled}
-                onClick={() => setIsMobileOpen(false)}
+                onClick={(event) =>
+                  handlePageAnchorClick(event, "/#contact", () => setIsMobileOpen(false))
+                }
               >
                 <ContactIcon />
               </ActionIconLink>
