@@ -46,13 +46,13 @@ export default function RippleGrid({
           "--cols": cols,
         } as React.CSSProperties
       }
-      aria-label="Interactive background ripple grid"
+      aria-hidden="true"
     >
       {cells.map((cell) => {
         const delay = clickedCell ? distance(cell, clickedCell) * 80 : 0;
 
         return (
-          <button
+          <span
             className="ripple-cell"
             key={`${cell.row}-${cell.col}-${rippleKey}`}
             style={
@@ -61,8 +61,6 @@ export default function RippleGrid({
               } as React.CSSProperties
             }
             onClick={() => handleCellClick(cell)}
-            tabIndex={-1}
-            aria-hidden="true"
           />
         );
       })}
