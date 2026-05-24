@@ -60,6 +60,7 @@ type ActionIconLinkProps = {
   children: React.ReactNode;
   isScrolled: boolean;
   inverted?: boolean;
+  newTab?: boolean;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
@@ -69,6 +70,7 @@ function ActionIconLink({
   children,
   isScrolled,
   inverted = false,
+  newTab = false,
   onClick,
 }: ActionIconLinkProps) {
   return (
@@ -77,6 +79,8 @@ function ActionIconLink({
       aria-label={label}
       title={label}
       onClick={onClick}
+      target={newTab ? "_blank" : undefined}
+      rel={newTab ? "noreferrer" : undefined}
       className={[
         "flex h-10 w-10 items-center justify-center border transition-[border-radius,background-color,border-color,color] duration-300 focus-visible:outline-none focus-visible:ring-2",
         isScrolled ? "rounded-full" : "rounded-xl",
@@ -169,18 +173,18 @@ export default function ResizableNavbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ActionIconLink
-            href="/#contact"
+            href="mailto:alvarorodriguezpizarro@gmail.com"
             label="Get in touch"
             isScrolled={isScrolled}
-            onClick={(event) => handlePageAnchorClick(event, "/#contact")}
           >
             <ContactIcon />
           </ActionIconLink>
           <ActionIconLink
-            href="https://github.com/"
+            href="https://github.com/VarozXYZ/"
             label="Open GitHub profile"
             isScrolled={isScrolled}
             inverted
+            newTab
           >
             <GitHubIcon />
           </ActionIconLink>
@@ -240,20 +244,19 @@ export default function ResizableNavbar() {
             ))}
             <div className="mt-2 flex gap-2">
               <ActionIconLink
-                href="/#contact"
+                href="mailto:alvarorodriguezpizarro@gmail.com"
                 label="Get in touch"
                 isScrolled={isScrolled}
-                onClick={(event) =>
-                  handlePageAnchorClick(event, "/#contact", () => setIsMobileOpen(false))
-                }
+                onClick={() => setIsMobileOpen(false)}
               >
                 <ContactIcon />
               </ActionIconLink>
               <ActionIconLink
-                href="https://github.com/"
+                href="https://github.com/VarozXYZ/"
                 label="Open GitHub profile"
                 isScrolled={isScrolled}
                 inverted
+                newTab
                 onClick={() => setIsMobileOpen(false)}
               >
                 <GitHubIcon />

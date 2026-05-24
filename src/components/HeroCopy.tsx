@@ -22,37 +22,6 @@ function LocationIcon() {
   );
 }
 
-function DownloadIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="hero-button-icon"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
-      <path
-        d="M12 4.75v10.5"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.8"
-      />
-      <path
-        d="m7.75 11 4.25 4.25L16.25 11"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M5.75 18.75h12.5"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.8"
-      />
-    </svg>
-  );
-}
-
 function ContactArrowIcon() {
   return (
     <svg
@@ -91,16 +60,22 @@ export default function HeroCopy() {
         <div className="focus-list">
           <p>
             <span className="focus-marker" aria-hidden="true" />
-            Converting <span className="accent-text">data</span> into valuable{" "}
-            <span className="accent-text">information</span>
+            <span className="focus-text">
+              Converting <span className="accent-text">data</span> into valuable{" "}
+              <span className="accent-text">information</span>
+            </span>
           </p>
           <p>
             <span className="focus-marker" aria-hidden="true" />
-            <span className="accent-text">Automatization</span> of processes
+            <span className="focus-text">
+              <span className="accent-text">Automatization</span> of processes
+            </span>
           </p>
           <p>
             <span className="focus-marker" aria-hidden="true" />
-            Designing <span className="accent-text">UI/UX</span> that users love
+            <span className="focus-text">
+              Designing <span className="accent-text">UI/UX</span> that users love
+            </span>
           </p>
         </div>
       </div>
@@ -111,11 +86,7 @@ export default function HeroCopy() {
       </p>
 
       <div className="hero-actions">
-        <ButtonLink href="/cv.pdf" download>
-          Download CV
-          <DownloadIcon />
-        </ButtonLink>
-        <ButtonLink href="#contact" variant="secondary">
+        <ButtonLink href="mailto:alvarorodriguezpizarro@gmail.com">
           Get in touch
           <ContactArrowIcon />
         </ButtonLink>

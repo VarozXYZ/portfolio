@@ -17,7 +17,7 @@ export type Project = {
   preview: "terminal" | "dashboard" | "docs" | "chart" | "game" | "landing";
 };
 
-const tech = {
+export const tech = {
   css: { name: "CSS", icon: "/tech/css3.svg" },
   django: { name: "Django", icon: "/tech/django.svg" },
   docker: { name: "Docker", icon: "/tech/docker.svg" },
