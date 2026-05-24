@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --line: rgba(255, 255, 255, 0.07);
+  --cell-fill: rgba(255, 255, 255, 0.085);
+  --bg: #080808;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  font-family:
+    "Aptos",
+    "Segoe UI",
+    sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.showcase-shell {
+  min-height: 280vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 72% 38%, rgba(255, 255, 255, 0.075), transparent 0 18rem),
+    linear-gradient(180deg, #0c0c0c 0%, #050505 100%);
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 280vh;
+  place-items: center;
+  isolation: isolate;
+}
+
+.background-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  overflow: hidden;
+  padding-top: 0;
+  z-index: 0;
+}
+
+.background-stage::before,
+.background-stage::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.background-stage::before {
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 26%, transparent 0 13rem, rgba(5, 5, 5, 0.28) 30rem, rgba(5, 5, 5, 0.82) 64rem),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.98), transparent 28%, transparent 72%, rgba(5, 5, 5, 0.98));
+}
+
+.background-stage::after {
+  inset: auto 0 0;
+  height: 44%;
+  z-index: 2;
+  background: linear-gradient(180deg, transparent, rgba(5, 5, 5, 0.92));
+}
+
+.ripple-grid {
+  display: grid;
+  width: max-content;
+  max-width: none;
+  grid-template-columns: repeat(var(--cols), var(--cell-size));
+  transform: translateY(0);
+}
+
+.ripple-cell {
+  position: relative;
+  width: var(--cell-size);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-width: 0 1px 1px 0;
+  background: rgba(255, 255, 255, 0.012);
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition: background-color 160ms ease;
+}
+
+.ripple-cell::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: var(--cell-fill);
+  opacity: 0;
+  animation: cell-ripple 760ms ease-out var(--ripple-delay) 1 both;
+}
+
+.ripple-cell:hover,
+.ripple-cell:focus-visible {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+@keyframes cell-ripple {
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .ripple-grid {
+    transform: translateX(-16%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple-cell {
+    animation: none;
+    transition: none;
+  }
+}
